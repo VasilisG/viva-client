@@ -1,0 +1,17 @@
+<div class="products-container p-6">
+  <ul class="products-list flex gap-6 justify-center align-center" *ngIf="products$ | async as products">
+    <li class="product-item flex flex-col min-w-[420px] justify-center p-4 rounded-lg shadow-lg bg-white ring ring-gray-200" *ngFor="let product of products">
+      <div class="product-image flex justify-center">
+        <img class="max-h-[250px]" [src]="product.image" [alt]="product.name" />
+      </div>
+      <div class="product-details mt-6 py-6 border-t border-gray-300 flex flex-col items-center justify-center">
+        <p class="product-sku font-light">SKU: <span class="sku-value font-bold">{{ product.sku }}</span></p>
+        <h3 class="product-name mt-6">{{ product.name }}</h3>
+        <p class="product-price mt-6 font-bold text-xl">{{ product.price }} €</p>
+      </div>
+      <div class="product-actions text-center">
+        <button class="add-to-cart-button bg-linear-65 from-blue-600 to-sky-500 cursor-pointer text-white py-2 px-4 rounded-lg" (click)="addToCart(product)">Add to cart</button>
+      </div>
+    </li>
+  </ul>
+</div>

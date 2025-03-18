@@ -1,0 +1,28 @@
+{
+  "products" : [
+    {
+      "id": 1,
+      "sku": "vintage-polaroid-camera",
+      "name": "Vintage Polaroid Camera",
+      "description": "This is a product description",
+      "price": 19.99,
+      "image": "assets/product_1.jpg"
+    },
+    {
+      "id": 2,
+      "sku": "rayban-sun-glasses",
+      "name": "Rayban Sun Glasses",
+      "description": "This is a product description",
+      "price": 29.99,
+      "image": "assets/product_2.jpg"
+    },
+    {
+      "id": 3,
+      "sku": "a-very-attractive-watch",
+      "name": "A Very Attractive Watch",
+      "description": "This is a product description",
+      "price": 39.99,
+      "image": "assets/product_3.jpg"
+    }
+  ]
+}

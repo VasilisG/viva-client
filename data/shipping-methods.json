@@ -1,0 +1,12 @@
+{
+  "items" : [
+    {
+      "label": "Standard Shipping",
+      "value": "standard"
+    },
+    {
+      "label": "Express Shipping",
+      "value": "express"
+    }
+  ]
+}

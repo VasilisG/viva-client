@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+mat-icon {
+  font-family: 'Material Icons' !important;  
+}
+
+html {
+  height: 100vh;
+}
+
+body, app-root, .app-container {
+  height: 100%;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
