@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { ResultService } from '../../../services/result/result.service';
-import { ECI_CODES, EVENT_CODES } from '../../../constants';
-import { EventInfo } from '../../../types/viva-types';
+import { ResultService } from '../../services/result/result.service';
+import { ECI_CODES, EVENT_CODES } from '../../constants';
+import { EventInfo } from '../../types/viva-types';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
