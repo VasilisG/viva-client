@@ -9,17 +9,17 @@
     </div>
     <div class="order-success-body mt-6">
         <div class="order-success-message">
-            <p class="text-center">Your order has been placed successfully.</p>
+            <p class="text-center text-gray-500">Your order has been placed successfully.</p>
             <p class="text-center mt-6 text-lg">Order details:</p>
-            <dl class="grid grid-cols-2 mt-2 max-w-[767px] m-auto text-center border border-gray-300 bg-white rounded">
-                <dt class="p-4 border-b border-r border-gray-300 flex justify-center items-center">Viva transaction ID</dt>
-                <dd class="p-4 font-bold border-b border-gray-300 flex justify-center items-center">{{ vivaResponse.t }}</dd>
-                <dt class="p-4 border-r border-gray-300 flex justify-center items-center">Viva payment order number</dt>
-                <dd class="p-4 font-bold flex justify-center items-center">{{ vivaResponse.s }}</dd>
+            <dl class="grid grid-cols-2 gap-1 mt-2 max-w-[767px] m-auto text-center">
+                <dt class="p-4 bg-white flex justify-center items-center shadow-xs">Viva transaction ID</dt>
+                <dd class="p-4 bg-white font-bold flex justify-center items-center shadow-xs">{{ vivaResponse.t }}</dd>
+                <dt class="p-4 bg-white flex justify-center items-center shadow-xs">Viva payment order number</dt>
+                <dd class="p-4 bg-white font-bold flex justify-center items-center shadow-xs">{{ vivaResponse.s }}</dd>
             </dl>
         </div>
         <div class="order-success-actions mt-6 text-center">
-          <a [routerLink]="['/products']" class="bg-sky-600 text-white inline-block p-3 rounded">Continue Shopping</a>
+          <a [routerLink]="['/products']" class="bg-sky-600 text-white inline-block p-3 rounded-xl">Continue Shopping</a>
         </div>
     </div>  
 </div>
