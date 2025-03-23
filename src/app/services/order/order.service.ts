@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { VivaResponse } from '../../types/viva-types';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +8,8 @@ import { Injectable } from '@angular/core';
 export class OrderService {
 
   constructor() { }
+
+  placeOrder(){
+    
+  }
 }

@@ -1,1 +1,25 @@
-<p>success works!</p>
+<div class="order-success-container p-4 m-auto">
+    <div class="order-success-header text-center">
+        <h1 class="font-bold text-2xl flex items-center justify-center gap-2">
+          <span class="text-green-600 flex justify-center items-center">
+            <mat-icon aria-hidden="false" aria-label="Success Icon" class="text-green-600">check_circle</mat-icon>
+          </span>
+          <span>Order Placed Successfully</span>
+        </h1>
+    </div>
+    <div class="order-success-body mt-6">
+        <div class="order-success-message">
+            <p class="text-center">Your order has been placed successfully.</p>
+            <p class="text-center mt-6 text-lg">Order details:</p>
+            <dl class="grid grid-cols-2 mt-2 max-w-[767px] m-auto text-center border border-gray-300 bg-white rounded">
+                <dt class="p-4 border-b border-r border-gray-300 flex justify-center items-center">Viva transaction ID</dt>
+                <dd class="p-4 font-bold border-b border-gray-300 flex justify-center items-center">{{ vivaResponse.t }}</dd>
+                <dt class="p-4 border-r border-gray-300 flex justify-center items-center">Viva payment order number</dt>
+                <dd class="p-4 font-bold flex justify-center items-center">{{ vivaResponse.s }}</dd>
+            </dl>
+        </div>
+        <div class="order-success-actions mt-6 text-center">
+          <a [routerLink]="['/products']" class="bg-sky-600 text-white inline-block p-3 rounded">Continue Shopping</a>
+        </div>
+    </div>  
+</div>
