@@ -1,6 +1,6 @@
 <div class="products-container p-6">
   <ul class="products-list flex gap-6 justify-center align-center" *ngIf="products$ | async as products">
-    <li class="product-item flex flex-col min-w-[420px] justify-center p-4 rounded-lg shadow-lg bg-white ring ring-gray-200" *ngFor="let product of products">
+    <li class="product-item flex flex-col min-w-[420px] justify-center p-4 rounded-lg shadow-sm bg-white" *ngFor="let product of products">
       <div class="product-image flex justify-center">
         <img class="max-h-[250px]" [src]="product.image" [alt]="product.name" />
       </div>
