@@ -1,6 +1,15 @@
+import { CustomerInfo } from "./order-types";
+
 export type EventInfo = {
   title: string;
   message: string;
+}
+
+export type VivaPayload = {
+  amount: number;
+  customer: CustomerInfo;
+  currency: number;
+  sourceCode: string;
 }
 
 export type VivaResponse = {

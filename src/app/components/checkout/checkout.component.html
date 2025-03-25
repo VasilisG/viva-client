@@ -19,7 +19,10 @@
             </div>
             <div class="checkout-customer-field flex flex-col mt-3">
               <label for="countryCode">Country Code</label>
-              <input class="border border-slate-300 p-2 mt-1" type="text" id="countryCode" name="countryCode" formControlName="countryCode" required/>
+              <select class="border border-slate-300 p-3 mt-1" id="countryCode" name="countryCode" formControlName="countryCode" required>
+                <option [ngValue]="'GR'">Greece</option>
+                <option [ngValue]="'CY'">Cyprus</option>
+              </select>
             </div>
           </div>
         </div>
@@ -29,7 +32,7 @@
           <h2 class="text-xl font-bold py-4 border-b border-sky-800">Shipping Methods</h2>
           <div class="shipping-methods py-4">
             <div class="shipping-method flex items-center" [class.mt-2]="i>0" *ngFor="let shippingMethod of vm.shippingMethods; index as i">
-              <input class="relative top-[1px]" type="radio" name="shippingMethod" [id]="shippingMethod.value" [value]="shippingMethod.value"/>
+              <input class="relative top-[1px]" type="radio" name="shippingMethod" [id]="shippingMethod.value" [value]="shippingMethod.value" (click)="setShippingMethod(shippingMethod)"/>
               <label class="shipping-method-label ml-3" [for]="shippingMethod.value">{{shippingMethod.label}}</label>
             </div>
           </div>
@@ -38,7 +41,7 @@
           <h2 class="text-xl font-bold py-4 border-b border-sky-800">Payment Methods</h2>
           <div class="payment-methods py-4">
             <div class="payment-method flex items-center" [class.mt-2]="i>0" *ngFor="let paymentMethod of vm.paymentMethods; index as i">
-              <input class="relative top-[1px]" type="radio" name="paymentMethod" [id]="paymentMethod.value" [value]="paymentMethod.value"/>
+              <input class="relative top-[1px]" type="radio" name="paymentMethod" [id]="paymentMethod.value" [value]="paymentMethod.value" (click)="setPaymentMethod(paymentMethod)"/>
               <label class="payment-method-label ml-3" [for]="paymentMethod.value">{{paymentMethod.label}}</label>
             </div>
           </div>
@@ -69,8 +72,8 @@
               <div class="side-cart-actions mt-4">
                 <a 
                   class="side-cart-action-link flex justify-center items-center px-6 h-[60px] border rounded-md text-white text-lg font-bold bg-linear-65 from-blue-600 to-sky-500 cursor-pointer mt-2" 
-                  [class.pointer-events-none]="!cartItems.length"
-                  [class.opacity-50]="!cartItems.length"
+                  [class.pointer-events-none]="!canSubmitOrder()"
+                  [class.opacity-50]="!canSubmitOrder()"
                   (click)="placeOrder()"
                 >Place Order</a>
               </div>

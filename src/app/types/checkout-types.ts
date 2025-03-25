@@ -3,5 +3,5 @@ interface CheckoutEntity {
   value: string;
 }
 
-interface ShippingMethod extends CheckoutEntity {}
-interface PaymentMethod extends CheckoutEntity {}
+export interface ShippingMethod extends CheckoutEntity {}
+export interface PaymentMethod extends CheckoutEntity {}
