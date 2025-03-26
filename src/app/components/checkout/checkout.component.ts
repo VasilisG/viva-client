@@ -7,8 +7,9 @@ import { PaymentMethod, ShippingMethod } from '../../types/checkout-types';
 import { OrderService } from '../../services/order/order.service';
 import { OrderPayload } from '../../types/order-types';
 import { LoadingService } from '../../services/loading/loading.service';
-import { catchError, finalize, throwError } from 'rxjs';
+import { catchError, finalize, tap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { VivaResponse } from '../../types/viva-types';
 
 @Component({
   selector: 'app-checkout',
@@ -40,6 +41,12 @@ export class CheckoutComponent {
 
   constructor() {
     this.vm$.subscribe(data => console.log(data));
+  }
+
+  ngOnInit() {
+    this.checkoutCustomerForm.reset();
+    this.checkoutService.setShippingMethod({label: '', value: ''});
+    this.checkoutService.setPaymentMethod({label: '', value: ''});
   }
 
   canSubmitOrder() {
@@ -74,7 +81,7 @@ export class CheckoutComponent {
         vatTotal: this.cartService.vatTotal(),
         grandTotal: this.cartService.grandTotal()
       },
-      amount: this.cartService.grandTotal()
+      amount: this.cartService.grandTotal() * 100
     }
     return orderPayload;
   }
@@ -84,13 +91,21 @@ export class CheckoutComponent {
     return throwError(() => new Error('An Error occured during payment process. Please try again later.'));
   }
 
+  redirectToUrl(res: VivaResponse){
+    if(res.success && res.data?.redirectUrl){
+      window.location.href = res.data.redirectUrl;
+    }
+  }
+
   placeOrder() {
     let orderPayload = this.createOrderPayload();
     this.loadingService.setLoading(true);
     this.orderService.placeOrder(orderPayload)
     .pipe(
+      tap((res: VivaResponse) => this.redirectToUrl(res)),
       catchError(error => this.handleError(error)),
       finalize(() => this.loadingService.setLoading(false))
-    );
+    )
+    .subscribe();
   }
 }

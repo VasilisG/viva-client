@@ -12,7 +12,7 @@ export class CartService {
 
   isSideCartOpen = computed(() => this.sideCartOpen());
   items = computed(() => this.cartItems());
-  totalItems = computed(() => this.cartItems().length);
+  totalItems = computed(() => this.cartItems().reduce((acc, product) => acc + product.qty, 0));
   subTotal = computed(() => this.cartItems().reduce((acc, product) => acc + product.price * product.qty, 0));
   vatTotal = computed(() => this.cartItems().reduce((acc, product) => acc + (product.price * 0.06) * product.qty, 0));
   grandTotal = computed(() => this.subTotal() + this.vatTotal());

@@ -18,21 +18,27 @@ export class ResultService {
     lang: ''
   };
 
-  constructor() { 
-    this.route.queryParamMap.subscribe((data: any) => {
-      const queryParams = data['params'];
-      if(this.missingParams(queryParams)) {
-        this.redirectBack();
-      }
-      else {
-        this.assigneQueryParamsToResponse(queryParams);
-      }
-    })
+  constructor() {
+    const queryParams = this.route.snapshot.queryParams;
+    if(this.missingParams(queryParams)) {
+      if(!this.gotVivaResponse()) this.redirectBack();
+    }
+    else {
+      this.assignQueryParamsToResponse(queryParams);
+    }
   }
 
-  private assigneQueryParamsToResponse(queryParams: any) {
+  private gotVivaResponse() {
+    return this.vivaResponse.eventId !== '' 
+    && this.vivaResponse.eci !== '' 
+    && this.vivaResponse.t !== ''
+    && this.vivaResponse.s !== '' 
+    && this.vivaResponse.lang !== '';
+  }
+
+  private assignQueryParamsToResponse(queryParams: any) {
     this.vivaResponse.eventId = queryParams['eventId'];
-    this.vivaResponse.eci = queryParams['ECI'];
+    this.vivaResponse.eci = queryParams['eci'];
     this.vivaResponse.t = queryParams['t'] || '';
     this.vivaResponse.s = queryParams['s'];
     this.vivaResponse.lang = queryParams['lang'];
@@ -47,6 +53,6 @@ export class ResultService {
   }
 
   missingParams(queryParams: any): boolean {
-    return !queryParams['eventId'] || !queryParams['ECI'] || !queryParams['s'] || !queryParams['lang'];
+    return !queryParams['eventId'] || !queryParams['eci'] || !queryParams['s'] || !queryParams['lang'];
   }
 }

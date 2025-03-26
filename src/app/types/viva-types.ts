@@ -14,7 +14,10 @@ export type VivaPayload = {
 
 export type VivaResponse = {
   success: boolean;
-  redirectUrl?: string;
+  data?: {
+    orderCode?: string;
+    redirectUrl?: string;
+  }
   message?: string;
 }
 
