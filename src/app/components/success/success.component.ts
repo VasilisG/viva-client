@@ -16,12 +16,12 @@ export class SuccessComponent implements OnInit {
 
   private resultService = inject(ResultService);
 
-  vivaResponse = this.resultService.getVivaResponse();
+  vivaQueryParams = this.resultService.getVivaQueryParams();
 
-  eventInfo: EventInfo = EVENT_CODES[this.vivaResponse.eventId];
+  eventInfo: EventInfo = EVENT_CODES[this.vivaQueryParams.eventId];
 
   ngOnInit(): void {
-    console.log(this.vivaResponse);
+    console.log(this.vivaQueryParams);
     console.log(this.eventInfo);
   }
 }

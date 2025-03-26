@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VivaResponse } from '../../types/viva-types';
+import { VivaQueryParams } from '../../types/viva-types';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class ResultService {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
-  private vivaResponse: VivaResponse = {
+  private vivaResponse: VivaQueryParams = {
     eventId: '',
     eci: '',
     t: '',
@@ -42,7 +42,7 @@ export class ResultService {
     this.router.navigate(['/products']);
   }
 
-  getVivaResponse(): VivaResponse {
+  getVivaQueryParams(): VivaQueryParams {
     return this.vivaResponse;
   }
 

@@ -6,6 +6,9 @@ import { CartService } from '../../services/cart/cart.service';
 import { PaymentMethod, ShippingMethod } from '../../types/checkout-types';
 import { OrderService } from '../../services/order/order.service';
 import { OrderPayload } from '../../types/order-types';
+import { LoadingService } from '../../services/loading/loading.service';
+import { catchError, finalize, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-checkout',
@@ -18,6 +21,7 @@ export class CheckoutComponent {
   checkoutService = inject(CheckoutService);
   cartService = inject(CartService);
   orderService = inject(OrderService);
+  loadingService = inject(LoadingService);
 
   checkoutCustomerForm = new FormGroup({
     fullname: new FormControl('', [Validators.required]),
@@ -69,13 +73,24 @@ export class CheckoutComponent {
         subTotal: this.cartService.subTotal(),
         vatTotal: this.cartService.vatTotal(),
         grandTotal: this.cartService.grandTotal()
-      }
+      },
+      amount: this.cartService.grandTotal()
     }
     return orderPayload;
   }
 
+  handleError(error: HttpErrorResponse) {
+    console.log(error);
+    return throwError(() => new Error('An Error occured during payment process. Please try again later.'));
+  }
+
   placeOrder() {
     let orderPayload = this.createOrderPayload();
-    this.orderService.placeOrder(orderPayload);
+    this.loadingService.setLoading(true);
+    this.orderService.placeOrder(orderPayload)
+    .pipe(
+      catchError(error => this.handleError(error)),
+      finalize(() => this.loadingService.setLoading(false))
+    );
   }
 }

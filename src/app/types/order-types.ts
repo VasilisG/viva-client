@@ -23,4 +23,5 @@ export type OrderPayload = {
   paymentMethod: PaymentMethod;
   items: OrderItem[];
   totals: OrderTotals;
+  amount: number;
 }

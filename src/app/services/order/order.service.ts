@@ -1,16 +1,16 @@
 import { inject, Injectable } from '@angular/core';
-import { VivaResponse } from '../../types/viva-types';
-import { ActivatedRoute } from '@angular/router';
 import { OrderPayload } from '../../types/order-types';
+import { HttpClient } from '@angular/common/http';
+import { ENV } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor() { }
+  http = inject(HttpClient);
 
   placeOrder(orderPayload: OrderPayload){
-    console.log(orderPayload);
+    return this.http.post<OrderPayload>(`${ENV.BASE_API_URL}/orders`, orderPayload);
   }
 }

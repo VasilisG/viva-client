@@ -16,14 +16,14 @@ export class FailureComponent {
 
   private resultService = inject(ResultService);
 
-  vivaResponse = this.resultService.getVivaResponse();
+  vivaQueryParams = this.resultService.getVivaQueryParams();
 
-  eventInfo: EventInfo = EVENT_CODES[this.vivaResponse.eventId];
+  eventInfo: EventInfo = EVENT_CODES[this.vivaQueryParams.eventId];
 
-  eciInfo = ECI_CODES[this.vivaResponse.eci];
+  eciInfo = ECI_CODES[this.vivaQueryParams.eci];
 
   ngOnInit(): void {
-    console.log(this.vivaResponse);
+    console.log(this.vivaQueryParams);
     console.log(this.eventInfo);
     console.log(this.eciInfo);
   }

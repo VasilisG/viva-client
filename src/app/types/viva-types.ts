@@ -13,6 +13,12 @@ export type VivaPayload = {
 }
 
 export type VivaResponse = {
+  success: boolean;
+  redirectUrl?: string;
+  message?: string;
+}
+
+export type VivaQueryParams = {
   eventId: string;
   eci: string;
   t?: string;
