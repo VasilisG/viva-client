@@ -9,7 +9,7 @@
       <span>My Cart</span>
     </h2>
     <span 
-      class="p-1 text-white text-center bg-sky-700 absolute right-[10px] top-1/2 transform -translate-y-1/2 cursor-pointer rounded flex justify-center items-center"
+      class="p-1 text-white text-center bg-sky-700 hover:bg-red-700 active:bg-red-500 transition duration-300 absolute right-[10px] top-1/2 transform -translate-y-1/2 cursor-pointer rounded flex justify-center items-center"
       (click)="closeSideCart()"
     >
       <mat-icon>close</mat-icon>
@@ -20,7 +20,7 @@
   >
     <div class="side-cart-item text-center p-2 border border-slate-300 rounded mt-4 shadow-md relative box-border" *ngFor="let cartItem of cartItems()">
       <span 
-        class="p-1 text-white text-center bg-slate-500 absolute right-[10px] top-[10px] cursor-pointer rounded flex justify-center items-center"
+        class="p-1 text-white text-center bg-slate-500 hover:bg-red-700 active:bg-red-500 transition duration-300 absolute right-[10px] top-[10px] cursor-pointer rounded flex justify-center items-center"
         (click)="removeFromCart(cartItem)"
       >
         <mat-icon>close</mat-icon>
@@ -40,7 +40,7 @@
     </div>
     <div class="side-cart-actions mt-2">
       <a 
-        class="side-cart-action-link flex justify-center items-center px-6 h-[60px] border rounded-md text-white text-lg font-bold bg-linear-65 from-blue-600 to-sky-500 cursor-pointer mt-2" 
+        class="side-cart-action-link flex justify-center items-center px-6 h-[60px] border rounded-md text-white text-lg font-bold bg-gradient-to-r from-blue-600 to-sky-500 hover:from-orange-500 hover:to-orange-400 active:from-orange-400 active:to-orange-300 cursor-pointer mt-2" 
         [routerLink]="'checkout'"
         [class.pointer-events-none]="!cartItems().length"
         [class.opacity-50]="!cartItems().length"

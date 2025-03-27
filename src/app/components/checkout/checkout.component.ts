@@ -10,10 +10,11 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { catchError, finalize, tap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { VivaResponse } from '../../types/viva-types';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-checkout',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatIconModule],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css'
 })

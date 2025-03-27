@@ -3,7 +3,10 @@
     <form class="checkout-form flex flex-row gap-4" [formGroup]="checkoutCustomerForm">
       <div class="checkout-item address-info-container flex-1">
         <div class="address-info-wrapper address-info-container p-4 bg-white shadow-sm rounded-md">
-          <h2 class="text-xl font-bold py-4 border-b border-sky-800">Address Information</h2>
+          <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-900 flex justify-start items-center gap-2">
+            <mat-icon aria-hidden="false" aria-label="Person Icon">person</mat-icon>
+            <span>Address Information</span>
+          </h2>
           <div class="checkout-customer-fields py-4">
             <div class="checkout-customer-field flex flex-col">
               <label for="fullname">First Name</label>
@@ -29,7 +32,10 @@
       </div>
       <div class="checkout-item methods-container flex-1 flex flex-col gap-4">
         <div class="shipping-methods-container p-4 bg-white shadow-sm rounded-md" *ngIf="vm.shippingMethods">
-          <h2 class="text-xl font-bold py-4 border-b border-sky-800">Shipping Methods</h2>
+          <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-800 flex justify-start items-center gap-2">
+            <mat-icon aria-hidden="false" aria-label="Shipping Icon">local_shipping</mat-icon>
+            <span>Shipping Methods</span>
+          </h2>
           <div class="shipping-methods py-4">
             <div class="shipping-method flex items-center" [class.mt-2]="i>0" *ngFor="let shippingMethod of vm.shippingMethods; index as i">
               <input class="relative top-[1px]" type="radio" name="shippingMethod" [id]="shippingMethod.value" [value]="shippingMethod.value" (click)="setShippingMethod(shippingMethod)"/>
@@ -38,7 +44,10 @@
           </div>
         </div>
         <div class="payment-methods-container p-4 bg-white shadow-sm rounded-md" *ngIf="vm.paymentMethods">
-          <h2 class="text-xl font-bold py-4 border-b border-sky-800">Payment Methods</h2>
+          <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-800 flex justify-start items-center gap-2">
+            <mat-icon aria-hidden="false" aria-label="Payment Icon">account_balance_wallet</mat-icon>
+            <span>Payment Methods</span>
+          </h2>
           <div class="payment-methods py-4">
             <div class="payment-method flex items-center" [class.mt-2]="i>0" *ngFor="let paymentMethod of vm.paymentMethods; index as i">
               <input class="relative top-[1px]" type="radio" name="paymentMethod" [id]="paymentMethod.value" [value]="paymentMethod.value" (click)="setPaymentMethod(paymentMethod)"/>
@@ -49,7 +58,10 @@
       </div>
       <div class="checkout-item checkout-summary flex-1">
         <div class="checkout-summary-wrapper p-4 bg-white shadow-sm rounded-md">
-          <h2 class="text-xl font-bold py-4 border-b border-sky-800">Order Summary</h2>
+          <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-800 flex justify-start items-center gap-2">
+            <mat-icon aria-hidden="false" aria-label="Summary Icon">shopping_cart</mat-icon>
+            <span>Order Summary</span>
+          </h2>
           <div class="checkout-summary-details flex flex-col justify-between items-stretch">
             <div class="checkout-cart-items py-2 max-h-[400px] overflow-auto">
               <div class="checkout-cart-item flex gap-3" [class.pt-4]="i>0" [class.border-t]="i>0" [class.border-slate-300]="i>0" [class.mt-4]="i>0" *ngFor="let cartItem of cartItems; index as i">
@@ -71,7 +83,7 @@
               </div>
               <div class="side-cart-actions mt-4">
                 <a 
-                  class="side-cart-action-link flex justify-center items-center px-6 h-[60px] border rounded-md text-white text-lg font-bold bg-linear-65 from-blue-600 to-sky-500 cursor-pointer mt-2" 
+                  class="side-cart-action-link flex justify-center items-center px-6 h-[60px] border rounded-md text-white text-lg font-bold bg-gradient-to-r from-blue-600 to-sky-500 hover:from-orange-500 hover:to-orange-400 active:from-orange-400 active:to-orange-300 cursor-pointer mt-2" 
                   [class.pointer-events-none]="!canSubmitOrder()"
                   [class.opacity-50]="!canSubmitOrder()"
                   (click)="placeOrder()"
