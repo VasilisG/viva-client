@@ -4,6 +4,7 @@ import { ProductsService } from '../../services/products/products.service';
 import { CartService } from '../../services/cart/cart.service';
 import { CartItem } from '../../types/cartItem';
 import { Product } from '../../types/product';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products',
@@ -15,6 +16,7 @@ export class ProductsComponent implements OnInit {
 
   private productsService = inject(ProductsService);
   private cartService = inject(CartService);
+  private toastService = inject(ToastrService);
 
   products$ = this.productsService.products$;
 
@@ -24,6 +26,7 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: Product): void {
     this.cartService.addToCart(product);
+    this.toastService.success(`Product ${product.name} added to cart.`, 'Info');
   }
 
 }

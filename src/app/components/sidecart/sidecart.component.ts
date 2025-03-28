@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CartItem } from '../../types/cartItem';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sidecart',
@@ -15,6 +16,7 @@ export class SidecartComponent implements OnInit {
 
   router = inject(Router);
   cartService = inject(CartService);
+  toastService = inject(ToastrService);
 
   isVisible = true;
 
@@ -41,5 +43,6 @@ export class SidecartComponent implements OnInit {
 
   removeFromCart(cartItem: CartItem){
     this.cartService.removeFromCart(cartItem);
+    this.toastService.success(`Product ${cartItem.name} removed from cart.`, 'Info');
   }
 }

@@ -11,6 +11,7 @@ import { catchError, finalize, tap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { VivaResponse } from '../../types/viva-types';
 import { MatIconModule } from '@angular/material/icon';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-checkout',
@@ -24,6 +25,7 @@ export class CheckoutComponent {
   cartService = inject(CartService);
   orderService = inject(OrderService);
   loadingService = inject(LoadingService);
+  toastService = inject(ToastrService);
 
   checkoutCustomerForm = new FormGroup({
     fullname: new FormControl('', [Validators.required]),
@@ -88,8 +90,8 @@ export class CheckoutComponent {
   }
 
   handleError(error: HttpErrorResponse) {
-    console.log(error);
-    return throwError(() => new Error('An Error occured during payment process. Please try again later.'));
+    this.toastService.error('Could not placing order.', 'Error');
+    return throwError(() => new Error(error.message));
   }
 
   redirectToUrl(res: VivaResponse){
