@@ -1,9 +1,9 @@
 <div 
-  class="sidecart-container fixed top-0 w-[400px] h-screen bg-white transition-right duration-300 shadow-lg"
+  class="sidecart-container fixed flex flex-col top-0 w-[400px] max-[480px]:w-screen h-screen bg-white transition-right duration-300 shadow-lg"
   [class.right-0]="cartService.isSideCartOpen()"
-  [class.right-[-400px]]="!cartService.isSideCartOpen()"
+  [class.right-[-480px]]="!cartService.isSideCartOpen()"
 >
-  <div class="title-actions relative py-4 px-2 border-b border-slate-300">
+  <div class="title-actions relative py-4 px-2 bg-slate-50 border-b border-slate-300 max-h-[250px]">
     <h2 class="text-lg text-center font-bold flex justify-center gap-3">
       <mat-icon aria-hidden="false" aria-label="Cart Icon">shopping_cart</mat-icon>
       <span>My Cart</span>
@@ -16,9 +16,9 @@
     </span>
   </div>
   <div 
-    class="side-cart-items-container pb-2 px-2 max-h-[600px] overflow-y-auto"
+    class="side-cart-items-container grow shrink pb-2 px-3 max-h-[600px] overflow-y-auto bg-slate-50"
   >
-    <div class="side-cart-item text-center p-2 border border-slate-300 rounded mt-4 shadow-md relative box-border" *ngFor="let cartItem of cartItems()">
+    <div class="side-cart-item text-center p-2 border border-slate-300 rounded mt-4 bg-white relative box-border" *ngFor="let cartItem of cartItems()">
       <span 
         class="p-1 text-white text-center bg-slate-500 hover:bg-red-700 active:bg-red-500 transition duration-300 absolute right-[10px] top-[10px] cursor-pointer rounded flex justify-center items-center"
         (click)="removeFromCart(cartItem)"
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <div class="side-cart-summary px-2 py-4 w-full absolute bottom-0">
+  <div class="side-cart-summary px-2 py-4 pt-1 w-full flex-1 bg-slate-50">
     <div class="side-cart-totals border-t border-b border-slate-300">
       <span class="side-cart-subtotal flex justify-between items-center py-1"><span>Subtotal:</span><span class="font-bold text-lg">{{cartTotal().toFixed(2)}} €</span></span>
       <span class="side-cart-vat-total flex justify-between items-center py-1"><span>VAT:</span><span class="font-bold text-lg">{{vatTotal().toFixed(2)}} €</span></span>

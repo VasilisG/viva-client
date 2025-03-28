@@ -1,8 +1,8 @@
-<div class="products-container p-6">
-  <ul class="products-list flex gap-6 justify-center align-center" *ngIf="products$ | async as products">
-    <li class="product-item flex flex-col min-w-[420px] justify-center p-4 rounded-lg shadow-sm bg-white" *ngFor="let product of products">
-      <div class="product-image flex justify-center">
-        <img class="max-h-[250px]" [src]="product.image" [alt]="product.name" />
+<div class="products-container md:p-6 px-3 sm:px-0 py-3">
+  <ul class="products-list m-auto flex flex-wrap lg:justify-center justify-center sm:justify-start lg:pl-0 sm:pl-[40px] pl-0" *ngIf="products$ | async as products">
+    <li class="product-item inline-flex flex-col shrink justify-center ml-0 sm:ml-2 mt-2 p-4 rounded-lg border border-slate-300 bg-white w-full max-w-[420px] sm:w-[calc(50%-2rem)] lg:w-[calc(33%-2rem)] xl:max-w-[420px]" *ngFor="let product of products">
+      <div class="product-image flex justify-center h-[250px]">
+        <img class="object-contain" [src]="product.image" [alt]="product.name" />
       </div>
       <div class="product-details mt-6 py-6 border-t border-gray-300 flex flex-col items-center justify-center">
         <p class="product-sku font-light">SKU: <span class="sku-value font-bold">{{ product.sku }}</span></p>
@@ -10,7 +10,7 @@
         <p class="product-price mt-6 font-bold text-xl">{{ product.price }} €</p>
       </div>
       <div class="product-actions text-center">
-        <button class="add-to-cart-button bg-gradient-to-r from-blue-600 to-sky-500 hover:from-orange-500 hover:to-orange-400 active:from-orange-400 active:to-orange-300 cursor-pointer text-white py-2 px-4 rounded-lg" (click)="addToCart(product)">Add to cart</button>
+        <button class="add-to-cart-button w-[150px] bg-gradient-to-r from-blue-600 to-sky-500 hover:from-orange-500 hover:to-orange-400 active:from-orange-400 active:to-orange-300 cursor-pointer text-white py-2 px-4 rounded-lg" (click)="addToCart(product)">Add to cart</button>
       </div>
     </li>
   </ul>

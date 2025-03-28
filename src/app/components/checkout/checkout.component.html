@@ -1,15 +1,15 @@
-<div class="checkout-container h-full p-6 flex" *ngIf="vm$ | async as vm">
-  <div class="checkout-wrapper w-3/4 mx-auto">
-    <form class="checkout-form flex flex-row gap-4" [formGroup]="checkoutCustomerForm">
-      <div class="checkout-item address-info-container flex-1">
-        <div class="address-info-wrapper address-info-container p-4 bg-white shadow-sm rounded-md">
+<div class="checkout-container h-full sm:p-6 p-2 flex" *ngIf="vm$ | async as vm">
+  <div class="checkout-wrapper 2xl:w-[85%] w-full mx-auto">
+    <form class="checkout-form flex max-[880px]:flex-col flex-row gap-4" [formGroup]="checkoutCustomerForm">
+      <div class="checkout-item address-info-container flex flex-col xl:flex-row gap-4 xl:flex-2 flex-3">
+        <div class="address-info-wrapper address-info-container p-4 bg-white border border-slate-300 rounded-md flex-1 lg:max-h-[450px]">
           <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-900 flex justify-start items-center gap-2">
             <mat-icon aria-hidden="false" aria-label="Person Icon">person</mat-icon>
             <span>Address Information</span>
           </h2>
           <div class="checkout-customer-fields py-4">
             <div class="checkout-customer-field flex flex-col">
-              <label for="fullname">First Name</label>
+              <label for="fullname">Full Name</label>
               <input class="border border-slate-300 p-2 mt-1" type="text" id="fullname" name="fullname" formControlName="fullname" required/>
             </div>
             <div class="checkout-customer-field flex flex-col mt-3">
@@ -29,35 +29,35 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="checkout-item methods-container flex-1 flex flex-col gap-4">
-        <div class="shipping-methods-container p-4 bg-white shadow-sm rounded-md" *ngIf="vm.shippingMethods">
-          <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-800 flex justify-start items-center gap-2">
-            <mat-icon aria-hidden="false" aria-label="Shipping Icon">local_shipping</mat-icon>
-            <span>Shipping Methods</span>
-          </h2>
-          <div class="shipping-methods py-4">
-            <div class="shipping-method flex items-center" [class.mt-2]="i>0" *ngFor="let shippingMethod of vm.shippingMethods; index as i">
-              <input class="relative top-[1px]" type="radio" name="shippingMethod" [id]="shippingMethod.value" [value]="shippingMethod.value" (click)="setShippingMethod(shippingMethod)"/>
-              <label class="shipping-method-label ml-3" [for]="shippingMethod.value">{{shippingMethod.label}}</label>
+        <div class="checkout-item methods-container flex-1 flex flex-col gap-4">
+          <div class="shipping-methods-container p-4 bg-white border border-slate-300 rounded-md" *ngIf="vm.shippingMethods">
+            <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-800 flex justify-start items-center gap-2">
+              <mat-icon aria-hidden="false" aria-label="Shipping Icon">local_shipping</mat-icon>
+              <span>Shipping Methods</span>
+            </h2>
+            <div class="shipping-methods py-4">
+              <div class="shipping-method flex items-center" [class.mt-2]="i>0" *ngFor="let shippingMethod of vm.shippingMethods; index as i">
+                <input class="relative top-[1px]" type="radio" name="shippingMethod" [id]="shippingMethod.value" [value]="shippingMethod.value" (click)="setShippingMethod(shippingMethod)"/>
+                <label class="shipping-method-label ml-3" [for]="shippingMethod.value">{{shippingMethod.label}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="payment-methods-container p-4 bg-white border border-slate-300 rounded-md" *ngIf="vm.paymentMethods">
+            <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-800 flex justify-start items-center gap-2">
+              <mat-icon aria-hidden="false" aria-label="Payment Icon">account_balance_wallet</mat-icon>
+              <span>Payment Methods</span>
+            </h2>
+            <div class="payment-methods py-4">
+              <div class="payment-method flex items-center" [class.mt-2]="i>0" *ngFor="let paymentMethod of vm.paymentMethods; index as i">
+                <input class="relative top-[1px]" type="radio" name="paymentMethod" [id]="paymentMethod.value" [value]="paymentMethod.value" (click)="setPaymentMethod(paymentMethod)"/>
+                <label class="payment-method-label ml-3" [for]="paymentMethod.value">{{paymentMethod.label}}</label>
+              </div>
             </div>
           </div>
         </div>
-        <div class="payment-methods-container p-4 bg-white shadow-sm rounded-md" *ngIf="vm.paymentMethods">
-          <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-800 flex justify-start items-center gap-2">
-            <mat-icon aria-hidden="false" aria-label="Payment Icon">account_balance_wallet</mat-icon>
-            <span>Payment Methods</span>
-          </h2>
-          <div class="payment-methods py-4">
-            <div class="payment-method flex items-center" [class.mt-2]="i>0" *ngFor="let paymentMethod of vm.paymentMethods; index as i">
-              <input class="relative top-[1px]" type="radio" name="paymentMethod" [id]="paymentMethod.value" [value]="paymentMethod.value" (click)="setPaymentMethod(paymentMethod)"/>
-              <label class="payment-method-label ml-3" [for]="paymentMethod.value">{{paymentMethod.label}}</label>
-            </div>
-          </div>
-        </div>
       </div>
-      <div class="checkout-item checkout-summary flex-1">
-        <div class="checkout-summary-wrapper p-4 bg-white shadow-sm rounded-md">
+      <div class="checkout-item checkout-summary xl:flex-1 flex-3">
+        <div class="checkout-summary-wrapper p-4 bg-white border border-slate-300 rounded-md">
           <h2 class="text-xl font-bold py-4 border-b border-sky-800 text-neutral-800 flex justify-start items-center gap-2">
             <mat-icon aria-hidden="false" aria-label="Summary Icon">shopping_cart</mat-icon>
             <span>Order Summary</span>
